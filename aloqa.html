@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bron qilish va aloqa — Mediazone</title>
+<meta name="description" content="Mediazone studiyasini bron qiling: xona, sana va vaqtni tanlang, narxni darhol ko‘ring. Har kuni 09:00–23:00, Toshkent.">
+<meta name="theme-color" content="#1A1A1A">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta property="og:title" content="Bron qilish — Mediazone">
+<meta property="og:image" content="assets/img/og.png">
+<link rel="preload" href="assets/fonts/Jost.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/config.js"></script>
+</head>
+<body data-page="aloqa">
+<header id="hdr" class="hdr"></header>
+
+<main>
+  <section class="phero">
+    <div class="wrap">
+      <div>
+        <p class="crumbs"><a href="index.html">Bosh sahifa</a> / Aloqa</p>
+        <h1>Bron qilish</h1>
+        <p class="lead">Formani to‘ldiring yoki qo‘ng‘iroq qiling. Joy 50% oldindan to‘lov bilan band qilinadi.</p>
+      </div>
+      <img class="phero-mark" src="assets/brand/belgi_rangli.svg" alt="" width="190" height="182">
+    </div>
+  </section>
+
+  <section class="sec" id="bron">
+    <div class="wrap split wide">
+      <form class="form rv" id="bronForm" novalidate>
+        <fieldset class="seg fld full" id="xizmatSeg">
+          <legend>Xizmat</legend>
+          <label><input type="radio" name="xizmat" value="xona" checked><span>Xona ijarasi</span></label>
+          <label><input type="radio" name="xizmat" value="reels"><span>Reels</span></label>
+          <label><input type="radio" name="xizmat" value="podkast"><span>Podkast</span></label>
+          <label><input type="radio" name="xizmat" value="foto"><span>Fotosessiya</span></label>
+          <label><input type="radio" name="xizmat" value="efir"><span>Jonli efir</span></label>
+          <label><input type="radio" name="xizmat" value="paket"><span>Oylik paket</span></label>
+          <label><input type="radio" name="xizmat" value="marketing"><span>Marketing</span></label>
+          <label><input type="radio" name="xizmat" value="academy"><span>Academy</span></label>
+        </fieldset>
+
+        <div class="fgrid">
+          <div class="fld full" data-for="xona podkast efir foto">
+            <label for="xona">Xona</label>
+            <select id="xona" name="xona">
+              <option value="reels">Reels — 99 000 so‘m / soat</option>
+              <option value="estetik">Estetik — 120 000 so‘m / soat</option>
+              <option value="classic">Classic — 150 000 so‘m / soat</option>
+              <option value="siklorama">Siklorama — 200 000 so‘m / soat</option>
+              <option value="onyx">Onyx — 300 000 so‘m / soat</option>
+            </select>
+          </div>
+          <div class="fld" data-for="xona reels podkast foto efir">
+            <label for="sana">Sana</label>
+            <input id="sana" name="sana" type="date">
+          </div>
+          <div class="fld" data-for="xona reels podkast foto efir">
+            <label for="vaqt">Boshlanish vaqti</label>
+            <select id="vaqt" name="vaqt"></select>
+          </div>
+          <div class="fld" data-for="xona">
+            <label for="soat">Necha soat</label>
+            <select id="soat" name="soat"></select>
+          </div>
+          <div class="fld" data-for="xona">
+            <label for="odam">Necha kishi</label>
+            <select id="odam" name="odam"></select>
+          </div>
+          <div class="fld">
+            <label for="ism">Ismingiz</label>
+            <input id="ism" name="ism" type="text" autocomplete="name" required>
+          </div>
+          <div class="fld">
+            <label for="tel">Telefon</label>
+            <input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="+998" required>
+          </div>
+          <div class="fld full">
+            <label for="izoh">Izoh</label>
+            <textarea id="izoh" name="izoh" placeholder="Masalan: 4 ta Reels, ssenariy tayyor"></textarea>
+          </div>
+        </div>
+
+        <div class="calc" id="calc" aria-live="polite">
+          <div class="row"><span id="cRoom">Xona</span><span id="cBase" class="tnum">—</span></div>
+          <div class="row" id="cNightRow" hidden><span>23:00 dan keyingi soatlar</span><span id="cNight" class="tnum">—</span></div>
+          <div class="row" id="cPplRow" hidden><span id="cPplLbl">Qo‘shimcha odamlar</span><span id="cPpl" class="tnum">—</span></div>
+          <div class="tot"><span>Taxminiy summa</span><b id="cTot" class="tnum">—</b></div>
+          <div class="row"><span>Oldindan to‘lov (50%)</span><span id="cPre" class="tnum">—</span></div>
+        </div>
+
+        <p class="small muted" id="formErr" role="alert" style="color:var(--terra-q)"></p>
+        <button class="btn btn-terra" type="submit">Ariza yuborish</button>
+
+        <div class="ok" id="ok" role="status">
+          <h3 class="h3">Arizangiz tayyor</h3>
+          <p class="muted" id="okText">Qo‘ng‘iroq qiling yoki matnni nusxalab yuboring, menejer bo‘sh vaqtni tasdiqlaydi.</p>
+          <pre id="okMsg"></pre>
+          <div class="acts">
+            <a class="btn btn-terra btn-sm" id="okCall" href="#">Qo‘ng‘iroq qilish</a>
+            <button class="btn btn-line btn-sm" type="button" id="okCopy">Matnni nusxalash</button>
+            <a class="btn btn-line btn-sm" id="okTg" href="#" target="_blank" rel="noopener" hidden>Telegram’da yozish</a>
+          </div>
+        </div>
+      </form>
+
+      <div class="rv">
+        <span class="ey">Aloqa</span>
+        <h2 class="h2 mt-s">Bog‘lanish</h2>
+        <div class="contacts mt">
+          <a href="#" data-mz-wrap="phone"><span>Telefon</span><span data-mz="phone"></span></a>
+          <div><span>Ish vaqti</span><span data-mz="hours"></span></div>
+          <div data-mz-wrap="address"><span>Manzil</span><span data-mz="address"></span></div>
+          <a href="#" data-mz-wrap="telegram"><span>Telegram</span><span data-mz="telegram"></span></a>
+          <a href="#" data-mz-wrap="instagram"><span>Instagram</span><span data-mz="instagram"></span></a>
+        </div>
+
+        <h3 class="h3 mt-l">Bilish kerak</h3>
+        <div class="faq mt-s">
+          <details><summary>Qanday to‘lanadi?<i></i></summary><div class="a">50% oldindan, qolgani kelganingizda. Dollardagi narxlar to‘lov kunidagi bank kursi bo‘yicha so‘mda.</div></details>
+          <details><summary>Vaqtni ko‘chirsa bo‘ladimi?<i></i></summary><div class="a">Ha, kamida 1 kun oldin xabar bering.</div></details>
+          <details><summary>Bekor qilsam-chi?<i></i></summary><div class="a">Syomka kuni yoki 2 soat qolganda bekor qilinsa, oldindan to‘lov qaytarilmaydi.</div></details>
+          <details><summary>Kamera va operator kiradimi?<i></i></summary><div class="a">Xona ijarasiga kirmaydi. Operator + 1 kamera — 150 000, + 2 kamera — 250 000 so‘m / soat. Reels va podkast tariflarida operator va kamera narx ichida.</div></details>
+          <details><summary>Chegirma bormi?<i></i></summary><div class="a">Instagram story qo‘yib bizni belgilasangiz — 10%. 5 ta tashrifdan keyin 6-tashrifda istalgan xona 1 soat bepul.</div></details>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="ftr"></footer>
+<script src="assets/js/site.js"></script>
+<script>
+(function () {
+  var C = window.MZ || {};
+  var PRICE = { reels: 99000, estetik: 120000, classic: 150000, siklorama: 200000, onyx: 300000 };
+  var NAME = { reels: "Reels", estetik: "Estetik", classic: "Classic", siklorama: "Siklorama", onyx: "Onyx" };
+  var XNAME = { xona: "Xona ijarasi", reels: "Reels syomka va montaj", podkast: "Podkast", foto: "Fotosessiya", efir: "Jonli efir / vebinar", paket: "Oylik paket", marketing: "Marketing", academy: "Academy (shogirdlik)" };
+  var NIGHT = 50000, EXTRA = 25000;
+  var f = document.getElementById("bronForm");
+  var $ = function (id) { return document.getElementById(id); };
+  function som(n) { return n.toLocaleString("ru-RU").replace(/ |,/g, " ") + " so‘m"; }
+
+  /* kontakt qatorlari: bo'sh bo'lsa yashiriladi */
+  document.querySelectorAll("[data-mz-wrap]").forEach(function (el) {
+    var k = el.getAttribute("data-mz-wrap"), v = C[k];
+    if (!v) { el.remove(); return; }
+    if (k === "phone") el.href = "tel:" + (C.phoneHref || v);
+    if (k === "telegram") el.href = "https://t.me/" + v;
+    if (k === "instagram") el.href = "https://instagram.com/" + v;
+  });
+
+  /* tanlovlar */
+  for (var h = 9; h <= 23; h++) $("vaqt").insertAdjacentHTML("beforeend", '<option value="' + h + '">' + (h < 10 ? "0" : "") + h + ":00</option>");
+  for (var s = 1; s <= 8; s++) $("soat").insertAdjacentHTML("beforeend", '<option value="' + s + '">' + s + " soat</option>");
+  for (var p = 1; p <= 10; p++) $("odam").insertAdjacentHTML("beforeend", '<option value="' + p + '">' + p + (p === 10 ? "+" : "") + " kishi</option>");
+  $("vaqt").value = "10"; $("odam").value = "2";
+  var d = new Date(); d.setDate(d.getDate() + 1);
+  var iso = function (x) { return x.getFullYear() + "-" + String(x.getMonth() + 1).padStart(2, "0") + "-" + String(x.getDate()).padStart(2, "0"); };
+  $("sana").min = iso(new Date()); $("sana").value = iso(d);
+
+  /* URL dan tanlash: ?xona=onyx yoki ?xizmat=podkast */
+  var q = new URLSearchParams(location.search);
+  if (q.get("xona") && PRICE[q.get("xona")]) $("xona").value = q.get("xona");
+  if (q.get("xizmat")) { var r = f.querySelector('input[name="xizmat"][value="' + q.get("xizmat") + '"]'); if (r) r.checked = true; }
+
+  function xizmat() { return f.querySelector('input[name="xizmat"]:checked').value; }
+
+  function sync() {
+    var x = xizmat();
+    f.querySelectorAll("[data-for]").forEach(function (el) { el.hidden = el.getAttribute("data-for").split(" ").indexOf(x) < 0; });
+    if (x === "foto") $("xona").value = "siklorama";
+    $("calc").hidden = x !== "xona";
+    calc();
+  }
+
+  function calc() {
+    var room = $("xona").value, hrs = +$("soat").value, start = +$("vaqt").value, ppl = +$("odam").value;
+    var base = PRICE[room] * hrs, night = 0;
+    for (var i = 0; i < hrs; i++) if (start + i >= 23) night += NIGHT;
+    var extra = ppl > 5 ? (ppl - 5) * EXTRA : 0;
+    var tot = base + night + extra;
+    $("cRoom").textContent = NAME[room] + " × " + hrs + " soat";
+    $("cBase").textContent = som(base);
+    $("cNightRow").hidden = !night; $("cNight").textContent = "+" + som(night);
+    $("cPplRow").hidden = !extra; $("cPplLbl").textContent = "5 kishidan ortiq: " + (ppl - 5) + (ppl === 10 ? "+" : "") + " kishi"; $("cPpl").textContent = "+" + som(extra);
+    $("cTot").textContent = som(tot);
+    $("cPre").textContent = som(Math.round(tot / 2));
+    return { room: room, hrs: hrs, start: start, ppl: ppl, tot: tot };
+  }
+
+  f.addEventListener("change", function (e) { if (e.target.name === "xizmat") sync(); else calc(); });
+  sync();
+
+  function message() {
+    var x = xizmat(), c = calc(), L = [];
+    L.push("Mediazone — yangi ariza");
+    L.push("Xizmat: " + XNAME[x]);
+    if (!$("xona").closest(".fld").hidden) L.push("Xona: " + NAME[c.room]);
+    if (!$("sana").closest(".fld").hidden) L.push("Sana: " + ($("sana").value || "—") + ", " + String(c.start).padStart(2, "0") + ":00");
+    if (x === "xona") { L.push("Davomiyligi: " + c.hrs + " soat, " + c.ppl + (c.ppl === 10 ? "+" : "") + " kishi"); L.push("Taxminiy summa: " + som(c.tot)); }
+    L.push("Ism: " + $("ism").value.trim());
+    L.push("Telefon: " + $("tel").value.trim());
+    if ($("izoh").value.trim()) L.push("Izoh: " + $("izoh").value.trim());
+    return L.join("\n");
+  }
+
+  f.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var err = $("formErr"); err.textContent = "";
+    var digits = $("tel").value.replace(/\D/g, "");
+    if (!$("ism").value.trim()) { err.textContent = "Ismingizni yozing."; $("ism").focus(); return; }
+    if (digits.length < 9) { err.textContent = "Telefon raqamini to‘liq yozing."; $("tel").focus(); return; }
+    var msg = message();
+    var show = function (sent) {
+      $("okMsg").textContent = msg;
+      $("okText").textContent = sent ? "Ariza qabul qilindi. Menejer tez orada qo‘ng‘iroq qiladi." : "Qo‘ng‘iroq qiling yoki matnni nusxalab yuboring, menejer bo‘sh vaqtni tasdiqlaydi.";
+      $("okCall").href = "tel:" + (C.phoneHref || C.phone || "");
+      $("okCall").hidden = !C.phone;
+      if (C.telegram) { $("okTg").hidden = false; $("okTg").href = "https://t.me/" + C.telegram; }
+      $("ok").classList.add("show");
+      $("ok").scrollIntoView({ behavior: "smooth", block: "center" });
+    };
+    if (C.formEndpoint) {
+      fetch(C.formEndpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text: msg }) })
+        .then(function (r) { show(r.ok); }, function () { show(false); });
+    } else show(false);
+  });
+
+  $("okCopy").addEventListener("click", function () {
+    var b = this, t = $("okMsg").textContent;
+    var done = function () { b.textContent = "Nusxalandi"; setTimeout(function () { b.textContent = "Matnni nusxalash"; }, 1500); };
+    try { navigator.clipboard.writeText(t).then(done, sel); } catch (e) { sel(); }
+    function sel() { var r = document.createRange(); r.selectNodeContents($("okMsg")); var s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Belgilandi, Ctrl+C bosing"; }
+  });
+})();
+</script>
+</body>
+</html>
