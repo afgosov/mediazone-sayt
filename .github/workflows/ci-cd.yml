@@ -1,0 +1,57 @@
+name: CI/CD
+
+# main ga har push: tekshiruv -> GitHub Pages ga deploy.
+# Pull request: faqat tekshiruv.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Tekshiruv
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Sahifalar, havolalar va fayllarni tekshirish
+        run: python scripts/check.py
+
+      - name: Sayt papkasini yig'ish (_site)
+        run: |
+          mkdir -p _site
+          cp -r *.html assets _site/
+          ls -R _site | head -n 60
+
+      - name: Pages uchun artefakt
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    name: GitHub Pages ga deploy
+    needs: check
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

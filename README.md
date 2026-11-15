@@ -22,6 +22,16 @@ python -m http.server 8787
 ```
 So'ng brauzerda `http://localhost:8787`.
 
+## CI/CD
+`.github/workflows/ci-cd.yml`:
+- **Har push va pull request** — `scripts/check.py` tekshiradi: har sahifada title, description, viewport; barcha ichki havola, rasm va fayllar mavjud; `#langar`lar to'g'ri; takroriy id yo'q; `config.js` da telefon bor.
+- **`main` ga push** — tekshiruv o'tsa, sayt avtomatik GitHub Pages ga chiqadi: https://afgosov.github.io/mediazone-sayt/
+
+Tekshiruvni kompyuterda ishga tushirish:
+```bash
+python scripts/check.py
+```
+
 ## Tuzilma
 - `assets/css/style.css` — brend ranglari (krem, ko'mir, qum, kul, terrakota) va butun dizayn
 - `assets/js/site.js` — sarlavha, menyu, pastki qism, xona chizmalari
